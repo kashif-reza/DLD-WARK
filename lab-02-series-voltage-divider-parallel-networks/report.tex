@@ -1,0 +1,260 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\captionsetup{font=small,labelfont=bf}
+\setlist[itemize]{itemsep=2pt,topsep=4pt}
+\setlist[enumerate]{itemsep=2pt,topsep=4pt}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ---- Edit your details here ----
+\newcommand{\AuthorName}{Kashif Reza}
+\newcommand{\AuthorRoll}{Roll No.: YOUR\_ROLL\_NUMBER}
+\newcommand{\AuthorID}{ID: 41250202869}
+\newcommand{\AuthorEmail}{kashifraza11j@gmail.com}
+
+\begin{document}
+
+% =================== COVER PAGE (full page) ===================
+\thispagestyle{empty}
+\mbox{}
+\begin{tikzpicture}[remember picture,overlay]
+    \node[inner sep=0pt,anchor=north west] at (current page.north west)
+        {\includegraphics[width=\paperwidth,height=\paperheight]{-3.png}};
+\end{tikzpicture}
+\clearpage
+\pagenumbering{arabic}
+
+% =================== TITLE BLOCK ===================
+\begin{center}
+    {\LARGE\bfseries Comprehensive Analysis of Tinkercad Circuit Simulation:\\[4pt]
+    Series Circuits, Voltage Division, and Parallel Resistor Networks\par}
+    \vspace{1.2em}
+    {\large\textbf{\AuthorName}}\\[2pt]
+    
+    Department of Computer Science and Engineering\\
+    Northern University Bangladesh, Dhaka, Bangladesh\\[2pt]
+    \texttt{\AuthorEmail}
+\end{center}
+\vspace{0.5em}
+
+% =================== ABSTRACT ===================
+\begin{abstract}
+\noindent This lab report provides a structured, two-part investigation into resistive circuit configurations using the Tinkercad simulation environment~\cite{ref_tinkercad,ref_finio}. Part I analyzes a series resistive circuit powered by a 9\,V battery, verifies Kirchhoff's Voltage Law, and demonstrates the voltage divider principle using multiple voltmeters. Part II examines equivalent resistance in series and parallel resistor networks, measured directly with ohmmeters and compared against theoretical calculations. Each section includes a problem statement, tools, description, step-by-step procedure, circuit diagram, input/output table, limitations, cautions, and observations.
+
+\medskip
+\noindent\textbf{Keywords:} Tinkercad, Series Circuit, Parallel Circuit, Voltage Divider, Equivalent Resistance.
+\end{abstract}
+
+% =================== PART I ===================
+\section{Part I: Series Circuit and Voltage Division}
+
+\subsection{Title}
+Analysis of Voltage Distribution and Kirchhoff's Voltage Law in a Series Resistive Circuit
+
+\subsection{Problem Statement}
+To build a series circuit consisting of two resistors connected to a 9\,V battery on a breadboard, measure the voltage across the source and across each resistor using digital multimeters, and verify that the measured values agree with Kirchhoff's Voltage Law (KVL) and the voltage divider rule.
+
+\subsection{Required Tools and Software}
+\begin{itemize}
+    \item Autodesk Tinkercad Circuits Platform (web-based simulator)~\cite{ref_tinkercad}
+    \item Half-size breadboard
+    \item 9\,V DC battery source
+    \item Two resistors: $R_1 = 2\,\text{k}\Omega$ and $R_2 = 1\,\text{k}\Omega$
+    \item Three digital multimeters (voltmeter mode)
+    \item Flexible jumper wires (red and black)
+\end{itemize}
+
+\subsection{Description}
+In a series circuit, components are connected end to end so that a single path exists for current; therefore, the same current flows through every component~\cite{ref_boylestad}. The equivalent resistance is the sum of the individual resistances:
+\[
+R_{eq} = R_1 + R_2
+\]
+According to KVL, the algebraic sum of all voltages around a closed loop is zero, so the source voltage equals the sum of the voltage drops across the resistors~\cite{ref_boylestad}:
+\[
+V_S = V_{R_1} + V_{R_2}
+\]
+The voltage across each resistor is proportional to its resistance, which gives the voltage divider rule~\cite{ref_floyd}:
+\[
+V_{R_n} = V_S \times \frac{R_n}{R_1 + R_2}
+\]
+Voltmeters have very high internal resistance and are therefore connected in \emph{parallel} across the component whose voltage is to be measured.
+
+\subsection{Procedure}
+\begin{enumerate}
+    \item Open Autodesk Tinkercad, sign in, and select \textbf{Circuits} $\rightarrow$ \textbf{Create new Circuit}~\cite{ref_tinkercad}.
+    \item Drag a \textbf{Breadboard Small}, a \textbf{9V Battery}, and two \textbf{Resistors} onto the workspace.
+    \item Set $R_1$ to $2\,\text{k}\Omega$ and $R_2$ to $1\,\text{k}\Omega$ in the properties box.
+    \item Connect the battery's positive terminal to the $+$ power rail and the negative terminal to the $-$ power rail using red and black wires.
+    \item Place $R_1$ and $R_2$ so that they share one common breadboard row (the middle node), forming a series chain.
+    \item Connect the free end of $R_1$ to the $+$ rail and the free end of $R_2$ to the $-$ rail.
+    \item Place three \textbf{Multimeters} on the workspace and set each to \textbf{Voltage (V)} mode.
+    \item Connect the first voltmeter across the battery (the $+$ and $-$ rails), the second across $R_1$, and the third across $R_2$, with the red probe on the higher-potential side in each case.
+    \item Click \textbf{Start Simulation} and record the three voltmeter readings.
+    \item Calculate the theoretical values using the voltage divider rule and compare them with the measured values.
+\end{enumerate}
+
+\subsection{Circuit Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{Screenshot 2026-10-23 032320.png}
+    \caption{Tinkercad series circuit with a 9\,V battery and two resistors; voltmeters read $9.00\,\text{V}$ (source), $6.00\,\text{V}$ (across $R_1$), and $3.00\,\text{V}$ (across $R_2$)~\cite{ref_tinkercad}.}
+    \label{fig:part1_circuit}
+\end{figure}
+
+\subsection{Input and Output Table}
+\begin{table}[H]
+    \centering
+    \caption{Input and output data for the series voltage divider circuit.}
+    \label{tab:part1_io}
+    \begin{tabularx}{\textwidth}{@{}l C C C@{}}
+        \toprule
+        \textbf{Quantity} & \textbf{Resistance} & \textbf{Calculated Value} & \textbf{Measured Value} \\
+        \midrule
+        Source voltage $V_S$ & --- & $9.00\,\text{V}$ & $9.00\,\text{V}$ \\
+        Voltage across $R_1$ & $2\,\text{k}\Omega$ & $6.00\,\text{V}$ & $6.00\,\text{V}$ \\
+        Voltage across $R_2$ & $1\,\text{k}\Omega$ & $3.00\,\text{V}$ & $3.00\,\text{V}$ \\
+        Equivalent resistance $R_{eq}$ & $3\,\text{k}\Omega$ & $3.00\,\text{k}\Omega$ & --- \\
+        Circuit current $I$ & --- & $3.00\,\text{mA}$ & --- \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Limitation}
+\begin{itemize}
+    \item The simulation assumes ideal components with exact resistance values, zero wire resistance, and no battery internal resistance.
+    \item Real voltmeters have finite input impedance and slightly load the circuit, especially when connected across large resistances.
+\end{itemize}
+
+\subsection{Caution}
+\begin{itemize}
+    \item Ensure the voltmeters are connected in parallel and never in series with the load.
+    \item Verify probe polarity (red to higher potential) to avoid negative readings, and confirm the resistor values before starting the simulation.
+\end{itemize}
+
+\subsection{Observation / Comment}
+The circuit current was calculated as
+\[
+I = \frac{V_S}{R_1 + R_2} = \frac{9.00\,\text{V}}{3000\,\Omega} = 3.00\,\text{mA}
+\]
+which gives $V_{R_1} = 3.00\,\text{mA} \times 2\,\text{k}\Omega = 6.00\,\text{V}$ and $V_{R_2} = 3.00\,\text{mA} \times 1\,\text{k}\Omega = 3.00\,\text{V}$. The measured readings matched these values exactly, and $6.00\,\text{V} + 3.00\,\text{V} = 9.00\,\text{V}$ confirmed Kirchhoff's Voltage Law. The larger resistor dropped the larger share of the supply voltage, confirming the voltage divider principle~\cite{ref_boylestad}.
+
+% =================== PART II ===================
+\section{Part II: Series and Parallel Resistor Networks}
+
+\subsection{Title}
+Measurement of Equivalent Resistance in Series and Parallel Resistor Combinations
+
+\subsection{Problem Statement}
+To build series and parallel combinations of identical $1\,\text{k}\Omega$ resistors on a breadboard, measure the equivalent resistance of each network with a digital multimeter in ohmmeter mode, and verify the readings against the theoretical series and parallel resistance formulas.
+
+\subsection{Required Tools and Software}
+\begin{itemize}
+    \item Autodesk Tinkercad Circuits Platform~\cite{ref_tinkercad}
+    \item Half-size breadboard
+    \item Six $1\,\text{k}\Omega$ resistors (three for each network)
+    \item Two digital multimeters (resistance mode)
+    \item Flexible jumper wires (red and black)
+\end{itemize}
+
+\subsection{Description}
+When resistors are connected in series, the equivalent resistance is the sum of all resistances, so it is always larger than the largest individual resistor~\cite{ref_boylestad}:
+\[
+R_{series} = R_1 + R_2 + R_3 + \cdots + R_n
+\]
+When resistors are connected in parallel, all of them share the same two nodes and therefore the same voltage, while the total current divides among the branches. The reciprocal of the equivalent resistance is the sum of the reciprocals~\cite{ref_floyd}:
+\[
+\frac{1}{R_{parallel}} = \frac{1}{R_1} + \frac{1}{R_2} + \frac{1}{R_3} + \cdots + \frac{1}{R_n}
+\]
+The equivalent parallel resistance is always smaller than the smallest individual resistor. For $n$ identical resistors, $R_{parallel} = R/n$. The ohmmeter must be connected only to an isolated network that has no power source attached.
+
+\subsection{Procedure}
+\begin{enumerate}
+    \item Open a new Tinkercad circuit and drag a \textbf{Breadboard Small} onto the workspace.
+    \item \textbf{Series network:} Place three $1\,\text{k}\Omega$ resistors end to end so that each pair of neighboring resistors shares one breadboard row, forming a single continuous chain.
+    \item Place a \textbf{Multimeter}, click it, and select the \textbf{Resistance ($\Omega$)} mode. Connect the probes to the two free ends of the chain and record the reading.
+    \item \textbf{Parallel network:} Place three $1\,\text{k}\Omega$ resistors so that all their left terminals share one breadboard column group and all their right terminals share another.
+    \item Place a second \textbf{Multimeter} in \textbf{Resistance ($\Omega$)} mode and connect the probes to the two common nodes of the parallel network.
+    \item Click \textbf{Start Simulation} and record both ohmmeter readings.
+    \item Calculate the theoretical equivalent resistances and compare them with the measured values.
+\end{enumerate}
+
+\subsection{Circuit Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Screenshot 2026-10-23 033428.png}
+    \caption{Tinkercad resistor networks: three $1\,\text{k}\Omega$ resistors in series measuring $3.00\,\text{k}\Omega$ (left), and in parallel measuring $333\,\Omega$ (right)~\cite{ref_tinkercad}.}
+    \label{fig:part2_circuit}
+\end{figure}
+
+\subsection{Input and Output Table}
+\begin{table}[H]
+    \centering
+    \caption{Equivalent resistance data for series and parallel networks.}
+    \label{tab:part2_io}
+    \begin{tabularx}{\textwidth}{@{}l C C C@{}}
+        \toprule
+        \textbf{Network} & \textbf{Resistors Used} & \textbf{Calculated $R_{eq}$} & \textbf{Measured $R_{eq}$} \\
+        \midrule
+        Series & $3 \times 1\,\text{k}\Omega$ & $3.00\,\text{k}\Omega$ & $3.00\,\text{k}\Omega$ \\
+        Parallel & $3 \times 1\,\text{k}\Omega$ & $333.3\,\Omega$ & $333\,\Omega$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Limitation}
+\begin{itemize}
+    \item The simulator assumes ideal resistors with exact nominal values, whereas real carbon-film resistors have a tolerance of about $\pm 5\%$, which changes the measured equivalent resistance~\cite{ref_floyd}.
+    \item Breadboard contact resistance and ohmmeter display rounding (for example, $333.3\,\Omega$ shown as $333\,\Omega$) introduce small discrepancies.
+\end{itemize}
+
+\subsection{Caution}
+\begin{itemize}
+    \item Never connect an ohmmeter to a live, energized circuit, as it may damage the meter.
+    \item Ensure that no resistor terminal is accidentally placed in the wrong breadboard row, since a misplaced leg changes the network topology and the measured resistance.
+\end{itemize}
+
+\subsection{Observation / Comment}
+For the series network, the theoretical value was
+\[
+R_{series} = 1\,\text{k}\Omega + 1\,\text{k}\Omega + 1\,\text{k}\Omega = 3.00\,\text{k}\Omega
+\]
+and for the parallel network
+\[
+R_{parallel} = \frac{1\,\text{k}\Omega}{3} \approx 333.3\,\Omega
+\]
+Both ohmmeter readings, $3.00\,\text{k}\Omega$ and $333\,\Omega$, agreed with the calculations. Series connection increased the total resistance, whereas parallel connection reduced it below that of a single resistor by providing multiple current paths~\cite{ref_boylestad}.
+
+% =================== REFERENCES ===================
+\begin{thebibliography}{8}
+
+\bibitem{ref_tinkercad}
+Autodesk, ``Tinkercad Circuits Simulator,'' 2026. [Online]. Available: \url{https://www.tinkercad.com/circuits}. [Accessed: Oct. 23, 2026].
+
+\bibitem{ref_finio}
+B. Finio, ``Tinkercad Circuits Labs,'' YouTube playlist. [Online]. Available: \url{https://www.youtube.com/playlist?list=PLKL6KBeCnI3XE8Uou5jWMABApkfrABh0L}. [Accessed: Oct. 23, 2026].
+
+\bibitem{ref_boylestad}
+R. L. Boylestad, \emph{Introductory Circuit Analysis}, 13th ed. Upper Saddle River, NJ: Pearson, 2015.
+
+\bibitem{ref_floyd}
+T. L. Floyd, \emph{Electronic Devices}, 10th ed. Boston, MA: Pearson, 2018.
+
+\end{thebibliography}
+
+\end{document}
