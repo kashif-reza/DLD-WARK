@@ -1,0 +1,297 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\captionsetup{font=small,labelfont=bf}
+\setlist[itemize]{itemsep=2pt,topsep=4pt}
+\setlist[enumerate]{itemsep=2pt,topsep=4pt}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+
+% ---- Edit your details here ----
+\newcommand{\AuthorName}{Kashif Reza}
+\newcommand{\AuthorRoll}{Roll No.: YOUR\_ROLL\_NUMBER}
+\newcommand{\AuthorID}{ID: 41250202869}
+\newcommand{\AuthorEmail}{kashifraza11j@gmail.com}
+
+\begin{document}
+
+% =================== COVER PAGE (full page) ===================
+\thispagestyle{empty}
+\mbox{}
+\begin{tikzpicture}[remember picture,overlay]
+    \node[inner sep=0pt,anchor=north west] at (current page.north west)
+        {\includegraphics[width=\paperwidth,height=\paperheight]{Gemini_Generated_Image_lbyyjulbyyjulbyy.jpg}};
+\end{tikzpicture}
+\clearpage
+\pagenumbering{arabic}
+
+% =================== TITLE BLOCK ===================
+\begin{center}
+    {\LARGE\bfseries Comprehensive Analysis of Tinkercad Circuit Simulation:\\[4pt]
+    Breadboards, Multimeters, and Ohm's Law Verification\par}
+    \vspace{1.2em}
+    {\large\textbf{\AuthorName}}\\[2pt]
+    \AuthorRoll \quad|\quad \AuthorID\\[2pt]
+    Department of Computer Science and Engineering\\
+    Northern University Bangladesh, Dhaka, Bangladesh\\[2pt]
+    \texttt{\AuthorEmail}
+\end{center}
+\vspace{0.5em}
+
+% =================== ABSTRACT ===================
+\begin{abstract}
+\noindent This lab report provides a structured, three-part investigation into fundamental electronic prototyping using the Tinkercad simulation environment~\cite{ref_tinkercad,ref_finio}. Part I explores the internal node topology and connection mechanics of electronic breadboards. Part II details the operational principles and deployment of digital multimeters for voltage, current, and resistance measurement. Part III examines and experimentally verifies Ohm's Law using controlled DC power supplies and standard resistive circuits. Each section includes a problem statement, tools, description, step-by-step procedure, circuit diagram, input/output table, limitations, cautions, and observations.
+
+\medskip
+\noindent\textbf{Keywords:} Tinkercad, Breadboard, Multimeter, Ohm's Law.
+\end{abstract}
+
+% =================== PART I ===================
+\section{Part I: Breadboard Usage and Connections}
+
+\subsection{Title}
+Analysis of Breadboard Internal Topology and Component Interconnection
+
+\subsection{Problem Statement}
+To understand how breadboards facilitate rapid prototyping without soldering by analyzing internal conductive strips, power rail configurations, and building a basic functional circuit consisting of a 9V DC battery, a current-limiting resistor, and an LED.
+
+\subsection{Required Tools and Software}
+\begin{itemize}
+    \item Autodesk Tinkercad Circuits Platform (web-based simulator)~\cite{ref_tinkercad}
+    \item Half-size breadboard
+    \item 9V DC battery source
+    \item Standard red LED and $1\,\text{k}\Omega$ resistor
+    \item Flexible jumper wires (red and black)
+\end{itemize}
+
+\subsection{Description}
+A breadboard is constructed with internal spring clips beneath a plastic matrix~\cite{ref_finio}. Terminal rows (columns $a\text{--}e$ and $f\text{--}j$) are electrically connected in groups of five across a central isolating divider notch. The outer vertical rails run continuously along the length of the board and are designated for power distribution ($+$ and $-$). In this experiment, power is routed from the 9V battery into the power rails, then bridged to the terminal strips to supply the resistor and LED network, completing the closed DC loop~\cite{ref_floyd}.
+
+\subsection{Procedure}
+\begin{enumerate}
+    \item Open Autodesk Tinkercad, sign in, and select \textbf{Circuits} $\rightarrow$ \textbf{Create new Circuit}~\cite{ref_tinkercad}.
+    \item From the Components panel, drag a \textbf{Breadboard Small} onto the workspace.
+    \item Drag a \textbf{9V Battery}, a \textbf{Resistor}, and a \textbf{Red LED} onto the workspace.
+    \item Click the resistor and set its value to $1\,\text{k}\Omega$ in the properties box.
+    \item Insert one leg of the resistor into a terminal row (for example, row 10, columns $a$--$e$) and the other leg into a different row (for example, row 15).
+    \item Insert the LED so that its anode (longer leg) shares row 15 with the resistor, and its cathode (shorter leg) sits in row 20.
+    \item Using a red wire, connect the battery's positive terminal to the $+$ power rail, then connect the $+$ rail to row 10 (the free end of the resistor).
+    \item Using a black wire, connect the battery's negative terminal to the $-$ rail, then connect the $-$ rail to row 20 (the LED cathode).
+    \item Click \textbf{Start Simulation} and observe whether the LED lights up.
+    \item Record the observations in the input/output table, then stop the simulation.
+\end{enumerate}
+
+\subsection{Circuit Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Screenshot 2026-10-16 023858.png}
+    \caption{Tinkercad circuit diagram showing basic breadboard connections with a 9V battery, resistor, and LED~\cite{ref_tinkercad}.}
+    \label{fig:part1_circuit}
+\end{figure}
+
+\subsection{Input and Output Table}
+\begin{table}[H]
+    \centering
+    \caption{Input and output parameters for the breadboard LED circuit.}
+    \label{tab:part1_io}
+    \begin{tabularx}{\textwidth}{@{}l L L@{}}
+        \toprule
+        \textbf{Parameter} & \textbf{Input Value / Condition} & \textbf{Observed Output / Status} \\
+        \midrule
+        Source Voltage & 9.00 V DC battery & Power rails energized successfully \\
+        Resistor & $1.00\,\text{k}\Omega$ connected in series & Current limited to safe operating range \\
+        LED Component & Anode to resistor, cathode to GND & Emits light (forward bias active) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Limitation}
+\begin{itemize}
+    \item Breadboards introduce parasitic capacitance and high contact resistance, making them unsuitable for high-frequency RF circuits.
+    \item Current-carrying capacity of internal breadboard tracks is typically limited to 1\,A--2\,A.
+\end{itemize}
+
+\subsection{Caution}
+\begin{itemize}
+    \item Never reverse the polarity of DC power sources when connecting polarized components like LEDs or electrolytic capacitors.
+    \item Avoid short-circuiting power rails directly without a current-limiting load.
+\end{itemize}
+
+\subsection{Observation / Comment}
+The wiring configuration confirmed that components inserted into the same five-hole terminal row share an electrical node. Proper alignment across the central barrier prevented internal short circuits between component terminals.
+
+% =================== PART II ===================
+\section{Part II: Multimeter Uses and Measurements}
+
+\subsection{Title}
+Diagnostic Measurement of Voltage, Current, and Resistance Using Digital Multimeters
+
+\subsection{Problem Statement}
+To master the configuration and application of digital multimeters in voltmeter, ammeter, and ohmmeter modes to measure electrical quantities across active and passive components in Tinkercad.
+
+\subsection{Required Tools and Software}
+\begin{itemize}
+    \item Autodesk Tinkercad Circuits Platform~\cite{ref_tinkercad}
+    \item Digital multimeters (configured for $V$, $A$, and $\Omega$)
+    \item DC power supply / 9V battery
+    \item Resistors and LEDs
+\end{itemize}
+
+\subsection{Description}
+A digital multimeter is essential for circuit analysis~\cite{ref_boylestad}. When measuring voltage, the multimeter acts as a voltmeter with extremely high internal resistance and must be connected in \emph{parallel} across the component terminals. When measuring current, it acts as an ammeter with very low internal resistance and must be inserted in \emph{series} within the current path~\cite{ref_boylestad}. For resistance, the component must be isolated from live voltage sources to prevent meter damage.
+
+\subsection{Procedure}
+\begin{enumerate}
+    \item Open a new Tinkercad circuit and build the battery--resistor--LED circuit from Part I on a breadboard.
+    \item \textbf{Resistance measurement:} Place a \textbf{Multimeter} on the workspace and click it to select the \textbf{Resistance ($\Omega$)} mode. With the circuit disconnected from the battery, connect the probes across the two terminals of the $1\,\text{k}\Omega$ resistor and record the reading.
+    \item \textbf{Voltage measurement:} Reconnect the battery. Click the multimeter and select the \textbf{Voltage (V)} mode. Connect the red probe to the higher-potential terminal and the black probe to the lower-potential terminal of the component under test, so that the meter is in \emph{parallel}. Click \textbf{Start Simulation} and record the voltage across the resistor and across the LED.
+    \item \textbf{Current measurement:} Stop the simulation. Break the circuit at one point (for example, remove the wire between the battery and the resistor). Select the \textbf{Current (A)} mode and insert the multimeter into the gap so that the meter is in \emph{series} with the load, with the red probe on the side nearer to the battery's positive terminal.
+    \item Start the simulation again and record the current reading.
+    \item Compare the readings with the theoretical values and note any difference in the input/output table.
+\end{enumerate}
+
+\subsection{Circuit Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Screenshot 2026-10-16 025159.png}
+    \caption{Multimeter deployments measuring parallel voltage drops, series current flow, and isolated component resistance ($1.00\,\text{k}\Omega$).}
+    \label{fig:part2_circuit}
+\end{figure}
+
+\subsection{Input and Output Table}
+\begin{table}[H]
+    \centering
+    \caption{Multimeter measurement input/output data.}
+    \label{tab:part2_io}
+    \begin{tabularx}{\textwidth}{@{}l L L@{}}
+        \toprule
+        \textbf{Measurement Mode} & \textbf{Connection Method} & \textbf{Observed Output Reading} \\
+        \midrule
+        Ohmmeter ($\Omega$) & Connected across isolated resistor & $1.00\,\text{k}\Omega$ \\
+        Voltmeter ($V$) & Connected in parallel across nodes & $7.61\,\text{V}$ and $3.67\,\text{V}$ potential drops \\
+        Ammeter ($A$) & Connected in series in circuit loop & Continuous branch current flow verified \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Limitation}
+\begin{itemize}
+    \item Real-world multimeters have finite input impedance, which can slightly load down sensitive high-impedance circuits.
+    \item Ammeter mode introduces a small voltage drop (burden voltage) due to internal shunt resistance.
+\end{itemize}
+
+\subsection{Caution}
+\begin{itemize}
+    \item Never connect an ohmmeter to a live, energized circuit, as it may damage the internal meter circuitry.
+    \item Ensure the selector dial and probe jacks match the intended electrical quantity (voltage vs.\ high-current ammeter terminals).
+\end{itemize}
+
+\subsection{Observation / Comment}
+Parallel voltage readings accurately reflected nodal potential distributions according to Kirchhoff's Voltage Law~\cite{ref_boylestad}. The isolated resistor reading verified nominal component ratings prior to live circuit integration.
+
+% =================== PART III ===================
+\section{Part III: Ohm's Law Verification}
+
+\subsection{Title}
+Empirical Verification of Ohm's Law in DC Resistive Networks
+
+\subsection{Problem Statement}
+To empirically verify the linear relationship between voltage, current, and resistance as defined by Ohm's Law ($V = I \times R$) using a regulated DC power supply and precision multimeters in Tinkercad.
+
+\subsection{Required Tools and Software}
+\begin{itemize}
+    \item Autodesk Tinkercad Circuits Platform~\cite{ref_tinkercad}
+    \item Adjustable DC power supply module
+    \item $1.00\,\text{k}\Omega$ precision resistor
+    \item Dual digital multimeters (voltmeter and ammeter configuration)
+\end{itemize}
+
+\subsection{Description}
+Ohm's Law states that current ($I$) is directly proportional to voltage ($V$) and inversely proportional to resistance ($R$)~\cite{ref_boylestad,ref_floyd}. To verify this, a controlled DC power supply was adjusted to output $5.00\,\text{V}$ across a $1.00\,\text{k}\Omega$ resistor. A voltmeter verified the exact potential across the resistor terminals, while an ammeter measured the resulting current flowing through the closed loop.
+
+\subsection{Procedure}
+\begin{enumerate}
+    \item Open a new Tinkercad circuit and place a \textbf{DC Power Supply} and a \textbf{Resistor} on the workspace.
+    \item Set the resistor value to $1\,\text{k}\Omega$ and set the power supply voltage to $5.00\,\text{V}$ by clicking it and typing the value in the properties box.
+    \item Place two \textbf{Multimeters} on the workspace. Set the first to \textbf{Voltage (V)} mode and the second to \textbf{Current (A)} mode.
+    \item Connect the power supply's positive terminal to the red probe of the ammeter. Connect the ammeter's black probe to one end of the resistor, and connect the other end of the resistor to the power supply's negative terminal. This places the ammeter in \emph{series} with the resistor.
+    \item Connect the voltmeter's probes across the two terminals of the resistor, red probe on the side nearer the positive terminal, so that it is in \emph{parallel}.
+    \item Click \textbf{Start Simulation}. Record the voltmeter reading ($V$) and the ammeter reading ($I$).
+    \item Calculate the theoretical current using $I = V/R$ and compare it with the measured value.
+    \item (Optional) Repeat steps 2--7 for other supply voltages, such as $2\,\text{V}$, $3\,\text{V}$, and $4\,\text{V}$, and add the results to the table to confirm the linear $V$--$I$ relationship.
+\end{enumerate}
+
+\subsection{Circuit Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Screenshot 2026-10-16 030512.png}
+    \caption{Ohm's Law verification setup with a $5.00\,\text{V}$ regulated supply and $1.00\,\text{k}\Omega$ resistor yielding $5.00\,\text{mA}$.}
+    \label{fig:part3_circuit}
+\end{figure}
+
+\subsection{Input and Output Table}
+\begin{table}[H]
+    \centering
+    \caption{Ohm's Law verification data table.}
+    \label{tab:part3_io}
+    \begin{tabularx}{\textwidth}{@{}C C C C@{}}
+        \toprule
+        \textbf{Test Case} & \textbf{Applied Voltage ($V$)} & \textbf{Resistance ($R$)} & \textbf{Measured Current ($I$)} \\
+        \midrule
+        1 & $5.00\,\text{V}$ & $1.00\,\text{k}\Omega$ ($1000\,\Omega$) & $5.00\,\text{mA}$ ($0.005\,\text{A}$) \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Limitation}
+\begin{itemize}
+    \item The simulation assumes ideal components with zero thermal drift and zero wire resistance.
+    \item Real-world component tolerances ($\pm 5\%$ for standard carbon-film resistors) will introduce minor discrepancies~\cite{ref_floyd}.
+\end{itemize}
+
+\subsection{Caution}
+\begin{itemize}
+    \item Ensure power supply current limits are appropriately set to prevent simulated component overload.
+    \item Verify correct decimal placement when converting between milliamperes (mA) and amperes (A).
+\end{itemize}
+
+\subsection{Observation / Comment}
+Calculating the theoretical current via
+\[
+I = \frac{V}{R} = \frac{5.00\,\text{V}}{1000\,\Omega} = 5.00\,\text{mA}
+\]
+matched the ammeter observation of $5.00\,\text{mA}$, confirming Ohm's Law within the ideal simulation~\cite{ref_boylestad}.
+
+% =================== REFERENCES ===================
+\begin{thebibliography}{8}
+
+\bibitem{ref_tinkercad}
+Autodesk, ``Tinkercad Circuits Simulator,'' 2026. [Online]. Available: \url{https://www.tinkercad.com/circuits}. [Accessed: Oct. 16, 2026].
+
+\bibitem{ref_finio}
+B. Finio, ``Tinkercad Circuits Labs,'' YouTube playlist. [Online]. Available: \url{https://www.youtube.com/playlist?list=PLKL6KBeCnI3XE8Uou5jWMABApkfrABh0L}. [Accessed: Oct. 16, 2026].
+
+\bibitem{ref_boylestad}
+R. L. Boylestad, \emph{Introductory Circuit Analysis}, 13th ed. Upper Saddle River, NJ: Pearson, 2015.
+
+\bibitem{ref_floyd}
+T. L. Floyd, \emph{Electronic Devices}, 10th ed. Boston, MA: Pearson, 2018.
+
+\end{thebibliography}
+
+\end{document}
